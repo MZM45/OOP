@@ -1,0 +1,81 @@
+package oop;
+
+import java.util.Scanner;
+
+public class task3 {
+ static int[][] Mat_1 = new int[3][3];
+ static int[][] Mat_2 = new int[3][3];
+ static int[][] Answer = new int[3][3];
+     
+ 
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        for(int i=0;i<=2;i++)
+        {
+            for(int j=0;j<=2;j++)
+            {
+                System.out.println("Enter the value for row"+" "+(i+1)+" coloumn"+" "+(j+1));
+                Mat_1[i][j]=input.nextInt();
+            }
+        }
+        for(int i=0;i<=2;i++)
+        {
+            for(int j=0;j<=2;j++)
+            {
+                System.out.println("Enter the value for row"+(i+1)+"coloumn"+(j+1));
+                Mat_2[i][j]=input.nextInt();
+            }
+        }
+        System.out.println("Enter number 1 for equation 1");
+        System.out.println("Enter number 2 for equation 2");
+        System.out.println("Enter number 3 for equation 3");
+        int menu = input.nextInt();
+        switch (menu){
+            case 1:
+                eq1();
+                break;
+            case 2:
+                eq2();
+                break;
+            case 3:
+                eq3();
+                break;
+            }
+         }
+       static void eq1(){
+             for(int i=0;i<=2;i++)
+             {
+                 for(int j=0;j<=2;j++){
+                     Answer[i][j]=((Mat_1[i][j])*3)+((Mat_2[i][j])*2);
+                     System.out.print((Answer[i][j])+" ");
+                 }
+                 System.out.println("");
+             }
+        
+         }
+         static void eq2(){
+             for(int i=0;i<=2;i++)
+             {
+                 for(int j=0;j<=2;j++){
+                     Answer[i][j]=((Mat_2[i][j]-3)*2);
+                     System.out.print((Answer[i][j])+" ");
+                     
+                     }
+                 System.out.println("");
+             }
+           
+        
+         }
+          static void eq3(){
+             for(int i=0;i<=2;i++)
+             {
+                 for(int j=0;j<=2;j++){
+                     Answer[i][j]=((Mat_2[i][j])*5)-(Mat_1[i][j])-2;
+                     System.out.print((Answer[i][j])+" ");
+                 }
+                 System.out.println("");
+             }
+        
+         }
+   
+       
