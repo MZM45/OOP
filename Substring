@@ -1,0 +1,15 @@
+package mzm;
+public class task1 {
+    public static void main(String[] args){
+    String msg=("Hello! I am string in java. I have several function and I am very “Important ”# string_is _importnat”");
+    System.out.println("Original string: "+msg);
+    String a =msg.substring(0,msg.indexOf('!')+1);
+    String b=msg.substring(msg.indexOf('!')+1,msg.indexOf('.')+1);
+    String c=msg.substring(msg.indexOf('.')+1,msg.indexOf('#'));
+    String d=msg.substring(msg.indexOf('#'));
+    System.out.println("Output#1 "+a);
+    System.out.println("Output#2 "+b);
+    System.out.println("Output#3 "+c);
+    System.out.println("Output#4 "+d);
+}
+}
