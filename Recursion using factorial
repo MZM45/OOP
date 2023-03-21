@@ -1,0 +1,26 @@
+package oop;
+import java.util.Scanner;
+public class task4 {
+public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter Number: ");
+        int num = in.nextInt();
+        int res = mul(num);
+        System.out.println("Result: " + res);
+
+    }
+    public static int mul(int num){
+        if(num == 1){
+            return 1;
+        }
+        else if(num <= 0){
+            return 0;
+        }
+        else{
+            return num * mul(num-1);
+        }
+    }
+
+    
+}
