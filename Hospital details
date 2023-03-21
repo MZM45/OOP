@@ -1,0 +1,45 @@
+package oop;
+
+import java.util.Scanner;
+
+
+public class Patient_info  {
+    int P_no,P_age,P_contact,P_bill;
+    String P_Name,P_email,P_complain; 
+    Scanner input=new Scanner(System.in);
+public static void main (String[] args)
+{
+    Patient_info pt = new Patient_info();
+      pt.getInfo();
+      pt.getPrint();
+}
+
+   void getPrint(){
+        System.out.println("Patient's Number:"+ P_no);
+        System.out.println("Patient's Name:"+P_Name);
+        System.out.println("Patient's Age:"+P_age);
+        System.out.println("Patient's Email:"+P_email);
+        System.out.println("Patient's Contact:"+P_contact);
+        System.out.println("Patient's Complain:" + P_complain);
+         System.out.println("Patient's Bill:"+P_bill);
+        
+   }
+
+    void getInfo(){
+        System.out.println("Enter Patient's Number:");
+        P_no=input.nextInt();
+        System.out.println("Enter Patient's Name:");
+        P_Name=input.next();
+        System.out.println("Enter Patient's Age:");
+        P_age=input.nextInt();
+        System.out.println("Enter Patient's Email:");
+        P_email=input.next();
+        System.out.println("Enter Patient's Contact:");
+        P_contact=input.nextInt();
+        System.out.println("Enter Patient's Complain:");
+        P_complain=input.next();
+        System.out.println("Enter Patient's Bill:");
+        P_bill=input.nextInt();
+   }  
+}
+
