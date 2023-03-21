@@ -1,0 +1,10 @@
+package mzm;
+public class task6 {
+    public static void main(String[] args){
+    String myStr = "this is the sample exercise of OOP basics";
+    String rep= myStr.replace("OOP","ICT");
+        System.out.println(myStr);
+        System.out.println("After Replacement");
+        System.out.println(rep);
+    }
+}
