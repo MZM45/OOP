@@ -1,0 +1,90 @@
+package mzm;
+import java.util.Scanner;
+public class ex1 {
+    private String name;
+    private String type;
+    private String processor;
+    private int ram;
+    private int hdd;
+    private String motherboard;
+    private String opticalDrive;
+    
+    // Default constructor
+    public ex1() {
+      
+    }
+    public void getInfo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter computer name: ");
+        name = scanner.nextLine();
+        System.out.print("Enter computer type: ");
+        type = scanner.nextLine();
+        System.out.print("Enter processor: ");
+        processor = scanner.nextLine();
+        System.out.print("Enter RAM size (in GB): ");
+        ram = scanner.nextInt();
+        System.out.print("Enter HDD size (in GB): ");
+        hdd = scanner.nextInt();
+        scanner.nextLine(); // consume remaining newline character
+        System.out.print("Enter motherboard specification: ");
+        motherboard = scanner.nextLine();
+        System.out.print("Enter optical drive type: ");
+        opticalDrive = scanner.nextLine();
+    }
+    public void displayInfo() {
+        System.out.println("Computer name: " + name);
+        System.out.println("Computer type: " + type);
+        System.out.println("Processor specification: " + processor);
+        System.out.println("RAM size: " + ram + " GB");
+        System.out.println("HDD size: " + hdd + " GB");
+        System.out.println("Motherboard specification: " + motherboard);
+        System.out.println("Optical drive type: " + opticalDrive);
+    }
+    public static void main(String[] args) {
+        ex1 computer = new ex1();
+        computer.getInfo();
+        computer.displayInfo();
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Do you want to change any information? (Y/N) ");
+        String response = scanner.nextLine();
+        if (response.equalsIgnoreCase("Y")) {
+            System.out.print("Enter field to change (name, type, processor, ram, hdd, motherboard, optical drive): ");
+            String field = scanner.nextLine();
+            switch (field.toLowerCase()) {
+                case "name":
+                    System.out.print("Enter new computer name: ");
+                    computer.name = scanner.nextLine();
+                    break;
+                case "type":
+                    System.out.print("Enter new computer type: ");
+                    computer.type = scanner.nextLine();
+                    break;
+                case "processor":
+                    System.out.print("Enter new processor specification: ");
+                    computer.processor = scanner.nextLine();
+                    break;
+                case "ram":
+                    System.out.print("Enter new RAM size (in GB): ");
+                    computer.ram = scanner.nextInt();
+                    break;
+                case "hdd":
+                    System.out.print("Enter new HDD size (in GB): ");
+                    computer.hdd = scanner.nextInt();
+                    break;
+                case "motherboard":
+                    System.out.print("Enter new motherboard specification: ");
+                    scanner.nextLine(); // consume remaining newline character
+                    computer.motherboard = scanner.nextLine();
+                    break;
+                case "optical drive":
+                    System.out.print("Enter new optical drive type: ");
+                    computer.opticalDrive = scanner.nextLine();
+                    break;
+                default:
+                    System.out.println("Invalid field entered.");
+            }
+            computer.displayInfo();
+        }
+    }
+}
