@@ -1,0 +1,89 @@
+package mzm;
+import java.util.Calendar;
+
+public class DateTime {
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
+    private int second;
+public static void main(String[] args) {
+        DateTime dt1 = new DateTime();
+        System.out.println("Current date and time: " + dt1.getYear() + "-" + dt1.getMonth() + "-" + dt1.getDay() + " " + dt1.getHour() + ":" + dt1.getMinute() + ":" + dt1.getSecond());
+
+        DateTime dt2 = new DateTime(2023, 3, 27);
+        System.out.println("Date only: " + dt2.getYear() + "-" + dt2.getMonth() + "-" + dt2.getDay());
+
+        DateTime dt3 = new DateTime(2023, 3, 27, 14, 30, 0);
+        System.out.println("Date and time: " + dt3.getYear() + "-" + dt3.getMonth() + "-" + dt3.getDay() + " " + dt3.getHour() + ":" + dt3.getMinute() + ":" + dt3.getSecond());
+    }
+   public DateTime() {
+        Calendar cal = Calendar.getInstance();
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH) + 1;
+        day = cal.get(Calendar.DAY_OF_MONTH);
+        hour = cal.get(Calendar.HOUR_OF_DAY);
+        minute = cal.get(Calendar.MINUTE);
+        second = cal.get(Calendar.SECOND);
+    }
+    public DateTime(int year, int month, int day) {
+        this();
+        setYear(year);
+        setMonth(month);
+        setDay(day);
+    }
+    public DateTime(int year, int month, int day, int hour, int minute, int second) {
+        this(year, month, day);
+        setHour(hour);
+        setMinute(minute);
+        setSecond(second);
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public void setSecond(int second) {
+        this.second = second;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+}
