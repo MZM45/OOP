@@ -1,0 +1,8 @@
+package transformation;
+public class Labour extends DescriptionDetails{
+ public Labour(String type, String description, double price, double 
+totalPrice, int quantity) {
+ super(type, description, price, totalPrice, quantity);
+ }
+}
+
