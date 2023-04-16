@@ -1,0 +1,36 @@
+package transformation;
+import java.util.ArrayList;
+public class Customer {
+ private String name, contactNumber;
+ private ArrayList<Vehicle> vehicles;
+ public Customer(String name, String contactNumber) {
+ this.name = name;
+ this.contactNumber = contactNumber;
+ this.vehicles = new ArrayList<>();
+ }
+ public String getName() {
+ return name;
+ }
+ public String getContactNumber() {
+ return contactNumber;
+ }
+ public void addVehicle(Vehicle vehicle) {
+ vehicles.add(vehicle);
+ }
+ public ArrayList<Vehicle> getVehicles() {
+ return vehicles;
+ }
+ public void displayCustomer(){
+ System.out.println("----------------------------------------------");
+ System.out.println("\t\t\t\t\tKarachi Auto Services Pvt.ltd");
+ System.out.println("-------------------------------------------");
+ System.out.println("Bill to: " + getName());
+ System.out.println("Contact No: " + getContactNumber());
+ for(Vehicle vehicle: vehicles){
+ System.out.println("Vehicle Number: " + vehicle.getVehicleNumber());
+ System.out.println("Model: " + vehicle.getModel());
+ }
+ System.out.println("-----------------------------------------------------");
+ }
+}
+
