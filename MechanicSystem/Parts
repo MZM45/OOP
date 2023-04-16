@@ -1,0 +1,12 @@
+package transformation;
+public class Parts extends DescriptionDetails{
+ private double discount;
+ public Parts(String type, String description, double price, double discount, 
+double totalPrice, int quantity) {
+ super(type, description, price, totalPrice, quantity);
+ this.discount = discount;
+ }
+ public double getDiscount() {
+ return discount;
+ }
+}
