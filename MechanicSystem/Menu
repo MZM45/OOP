@@ -1,0 +1,133 @@
+package transformation;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Menu {
+ Customer customer;
+ ArrayList<Parts> partsList = new ArrayList<Parts>();
+ ArrayList<Labour> labourList = new ArrayList<Labour>();
+ public void addParts(Parts part){
+ this.partsList.add(part);
+ }
+ public void addLabour(Labour labour){
+ this.labourList.add(labour);
+ }
+ public static void main(String[] args) {
+ Scanner in = new Scanner(System.in);
+ Scanner sc = new Scanner(System.in);
+ String customerName, customerNo, vehicleNo, model;
+ Parts parts = null;
+ Labour labour = null;
+ Menu bill = new Menu();
+ System.out.print("Enter Customer Name: ");
+ customerName = in.nextLine();
+ System.out.print("Enter Customer Contact: ");
+ customerNo = in.nextLine();
+ System.out.print("Enter Vehicle Number: ");
+ vehicleNo = in.nextLine();
+ System.out.print("Enter Vehicle Model: ");
+ model = in.nextLine();
+ // Create a customer object
+ bill.customer = new Customer(customerName, customerNo);
+ // Create a vehicle object and associate it with the customer
+ Vehicle vehicle = new Vehicle(vehicleNo, model);
+ bill.customer.addVehicle(vehicle);
+ boolean cont = false;
+ boolean print = false;
+ do {
+ int choice;
+ System.out.println("\nAdd Services");
+ System.out.println("1.Add Parts");
+ System.out.println("2.Add Labour");
+ System.out.println("3.Print Receipt");
+ System.out.print("Enter Choice: ");
+ choice = in.nextInt();
+ if (choice == 1) {
+ String desc;
+ int quantity;
+ double price, discount, totalPrice;
+ System.out.print("Enter Part Description: ");
+ desc = sc.nextLine();
+ System.out.print("Enter Part Quantity: ");
+ quantity = in.nextInt();
+ System.out.print("Enter Part Price: ");
+ price = in.nextDouble();
+ System.out.print("Enter Part Discount: ");
+ discount = in.nextDouble();
+ totalPrice = (price * quantity) - discount;
+ parts = new Parts("Parts", desc, price, discount, totalPrice, 
+quantity);
+ bill.addParts(parts);
+ } else if (choice == 2) {
+ String desc;
+ int quantity;
+ double price, totalPrice;
+ System.out.print("Enter Labour Description: ");
+ desc = sc.nextLine();
+ System.out.print("Enter Labour Quantity: ");
+ quantity = in.nextInt();
+ System.out.print("Enter Labour Price: ");
+ price = in.nextDouble();
+ totalPrice = price * quantity;
+ labour = new Labour("Parts", desc, price, totalPrice, quantity);
+ bill.addLabour(labour);
+ } else if (choice == 3) {
+ bill.printReceipt();
+ cont = true;
+ break;
+ }
+ else {
+ System.out.println("Wrong Input!!!");
+ }
+ System.out.print("Press 1 if you want to continue adding more or else press 0: ");
+ int contInt = in.nextInt();
+ if (contInt == 1) {
+ cont = true;
+ }
+ }while(cont == true);
+ }
+ public void printReceipt(){
+ double partsTotal = 0.0;
+ for (Parts part : partsList) {
+ partsTotal += part.getTotalPrice();
+ }
+ double labourTotal = 0;
+ for (Labour labourItem : labourList) {
+ labourTotal += labourItem.getTotalPrice();
+ }
+ double serviceTax = partsTotal * 0.05;
+ double additionalRepair = 15.00;
+ double grandTotal = 0;
+ for (Parts part : partsList) {
+ grandTotal += part.getTotalPrice();
+ }
+ for (Labour labourItem : labourList) {
+ grandTotal += labourItem.getTotalPrice();
+ }
+ grandTotal += serviceTax;
+ grandTotal += additionalRepair;
+ customer.displayCustomer();
+ System.out.printf("%-10s %-30s %-10s %-10s %-10s %-10s%n", "Type", 
+"Description", "Quantity", "Price", "Discount", "Total");
+ for (Parts part : partsList) {
+ System.out.printf("%-10s %-30s %-10d $%-9.2f %-9f $%-9.2f%n", 
+part.getType(), part.getDescription(), part.getQuantity(),
+ part.getPrice(), part.getDiscount(), part.getTotalPrice());
+ }
+ for (Labour labour : labourList) {
+ System.out.printf("%-10s %-30s %-10d $%-9.2f -%-9s $%-9.2f%n", 
+labour.getType(), labour.getDescription(), labour.getQuantity(),
+ labour.getPrice(), "", labour.getTotalPrice());
+ }
+ System.out.println("---------------------------------------------------");
+ System.out.printf("%-51s $%-9.2f%n", "Parts Total:", partsTotal);
+ System.out.printf("%-51s $%-9.2f%n", "Service Tax(5%):", serviceTax);
+ System.out.printf("%-51s $%-9.2f%n", "Labour Total:", labourTotal);
+ System.out.printf("%-51s $%-9.2f%n", "Additional Repair:", 
+additionalRepair);
+ System.out.println("---------------------------------");
+ System.out.printf("%-51s $%-9.2f%n", "Grand Total:", grandTotal);
+ System.out.println("---------------------------------------------");
+ }
+}
+
+         
