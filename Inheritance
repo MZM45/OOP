@@ -1,0 +1,134 @@
+
+
+
+
+package mzm;
+public class Inheritance_2{
+
+
+    public static void main(String[] args) {
+   member memberobj1= new member("Zain","zainmomin45@gmail.com","03319990013");
+   
+    member memberobj2= new member("ali","zainmomin45@gmail.com","03319990013");
+    
+     member memberobj3= new member("aaqib","zainmomin45@gmail.com","03319990013");
+   Account Accountobj1=new Account(0123456,"Johar",memberobj1,99999999);
+   CurrentAccount caobj=new CurrentAccount(0123456,"Johar",memberobj2,99999999,"Current");
+   SavingAccount saobj=new SavingAccount(0123456,"Johar",memberobj3,99999999,"Saving");
+        System.out.println(saobj.toString());
+        System.out.println(caobj.toString());
+    }
+    
+}
+
+class member{
+private String MemberName,MemberEmail,MemberContact;
+
+
+public member(String MemberName,String MemberEmail,String MemberContact){
+this.MemberName=MemberName;
+this.MemberEmail=MemberEmail;
+this.MemberContact=MemberContact;
+    
+}
+public String getMemberName() {
+        return MemberName;
+    }
+
+    
+
+    public String getMemberEmail() {
+        return MemberEmail;
+    }
+
+    
+
+    public String getMemberContact() {
+        return MemberContact;
+    }
+
+   
+
+
+}
+class Account{
+    Account Accountobj=null;
+private int AccountNo;
+private String Branch;
+private double AccountBalance;
+private member AccountOwner;
+
+
+public Account(int AccountNo,String Branch,member AccountOwner,double AccountBalance){
+    
+    this.AccountNo=AccountNo;
+    this.Branch=Branch;
+    this.AccountOwner=AccountOwner;
+    this.AccountBalance=AccountBalance;
+}
+
+    public int getAccountNo() {
+        return AccountNo;
+    }
+
+    public String getBranch() {
+        return Branch;
+    }
+
+    public double getAccountBalance() {
+        return AccountBalance;
+    }
+
+    public String getAccountOwner(){
+            return AccountOwner.getMemberName(); 
+    }
+    public String getOwnerEmail(){
+        return AccountOwner.getMemberEmail();
+    }
+ public String getOwnerContact(){
+        return AccountOwner.getMemberContact();
+    }
+    @Override
+    public String toString(){
+    
+ return "Owner is:  "+ getAccountOwner()+"\n" +"Account Balance: "+getAccountBalance()+"\n"+"Account Branch: "+getBranch()+"\n"+"Accounter Number: "+AccountNo+"\n"+"Acoount Owner Email: "+getOwnerEmail()+"\n"+"Acoount Owner Contact: "+getOwnerContact()+"\n";
+}
+
+}
+
+class SavingAccount extends Account{
+    SavingAccount sa=null;
+private String AccountType;
+
+    public SavingAccount(int AccountNo, String Branch, member AccountOwner, double AccountBalance,String AccountType) {
+        super(AccountNo, Branch, AccountOwner, AccountBalance);
+        this.AccountType=AccountType;
+    }
+
+    public String getAccountType() {
+        return AccountType;
+    }
+    
+@Override
+    public String toString(){
+        return super.toString() + "Account Type:" + AccountType+"\n";
+    }
+}
+
+
+class CurrentAccount extends Account{
+    CurrentAccount ca=null;
+private String AccountType;
+    public CurrentAccount(int AccountNo, String Branch, member AccountOwner, double AccountBalance,String AccountType) {
+        super(AccountNo, Branch, AccountOwner, AccountBalance);
+        this.AccountType=AccountType;
+    }
+public String getAccountType() {
+        return AccountType;
+    }
+
+@Override
+public String toString(){
+        return super.toString() + "Account Type:" + AccountType+"\n";
+    }
+}
