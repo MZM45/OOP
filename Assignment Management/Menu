@@ -1,0 +1,82 @@
+package transformation;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Menu {
+    private final String password = "1234";
+    private final String login = "Zain";
+    public ArrayList<Student> studentlist2;
+    public ArrayList<University> universitylist2;
+    
+    public Menu() {
+        studentlist2 = new ArrayList<Student>();
+        universitylist2 = new ArrayList<University>();
+    }
+
+
+    public static void main(String[] args) {
+        int choice = 2;
+        Scanner in = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        Menu menuobj = new Menu();
+        
+        while (choice == 2) {
+            System.out.println("Assignment Management System");
+
+            String studentName, studentAddress, studentEnroll, studentSection, studentCnic;
+            int studentAge, studentSemester;
+
+            System.out.println("Enter Student Name: ");
+            studentName = sc.nextLine();
+            System.out.println("Enter Student Age: ");
+            studentAge = in.nextInt();
+
+            System.out.println("Enter Student Address: ");
+            
+            studentAddress = sc.nextLine();
+            System.out.println("Enter Student CNIC NUMBER: ");
+            studentCnic = sc.nextLine();
+            System.out.println("Enter Student Enrollment Number: ");
+            studentEnroll = sc.nextLine();
+            System.out.println("Enter Student Semester Number: ");
+            studentSemester = in.nextInt();
+            System.out.println("Enter Student Section: ");
+            
+            studentSection = sc.nextLine();
+            University university = new University(studentEnroll, studentSemester, studentSection);
+            Student stuobj = new Student(studentName, studentAge, studentAddress,studentCnic );
+            menuobj.addUniversitylist(university);
+            menuobj.addstudentlist(stuobj);
+            System.out.println("Press 1 to view students or 2 to enter another data: ");
+            choice = in.nextInt();
+            
+            if (choice == 1) {
+                                
+             System.out.println("List of students:");
+        for (Student stuobj2 : menuobj.studentlist2) {
+        System.out.println("Name: " + stuobj2.getStudentName());
+        System.out.println("Age: " + stuobj2.getStudentAge());
+        System.out.println("Address: " + stuobj2.getStudentAddress());
+        System.out.println("CNIC: " + stuobj2.getStudentCnic());
+        for (University university2 : menuobj.universitylist2) {
+       System.out.println("Enrollment Number: " + university2.getStudentEnroll());
+        System.out.println("Semester Number: " + university2.getStudentSemester());
+        System.out.println("Section: " + university2.getStudentSection());
+     
+     }   
+    }
+         
+            }
+            }
+        }
+    public void addUniversitylist(University university){
+     this.universitylist2.add(university);
+    } 
+    public void addstudentlist(Student stuobj){
+     this.studentlist2.add(stuobj);
+    } 
+   
+}
+
+
