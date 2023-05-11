@@ -1,0 +1,25 @@
+package transformation;
+public class University {
+ private String studentEnroll,studentSection;
+ private int studentSemester;
+ public University(String studentEnroll, int studentSemester,String studentSection) {
+ this.studentEnroll=studentEnroll;
+ this.studentSemester=studentSemester;
+ this.studentSection=studentSection;
+ }
+
+    public String getStudentEnroll() {
+        return studentEnroll;
+    }
+
+    public String getStudentSection() {
+        return studentSection;
+    }
+
+    public int getStudentSemester() {
+        return studentSemester;
+    }
+
+ 
+
+}
